@@ -13,7 +13,6 @@ let g:coc_global_extensions = [
             \ 'coc-yank',
             \ 'coc-git',
             \ 'coc-translator',
-            \ 'coc-clangd',
             \ 'coc-json',
             \ 'coc-cmake',
             \ ]
