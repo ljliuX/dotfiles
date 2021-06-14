@@ -5,6 +5,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'liuchengxu/vista.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'skywind3000/asyncrun.vim'
+Plug 'mhinz/vim-startify'
 call plug#end()
 
 let g:coc_global_extensions = [
@@ -83,6 +84,8 @@ augroup mygroup
   autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
   " Update signature help on jump placeholder.
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+  " JSON file get correct comment highlighting
+  autocmd FileType json syntax match Comment +\/\/.\+$+
 augroup end
 
 nmap <leader>t <Plug>(coc-translator-p)
@@ -93,10 +96,20 @@ nnoremap <silent> <leader>y :<C-u>CocList -A --normal yank<cr>
 nnoremap <silent> <leader>v :Vista!!<cr>
 
 " toggle quickfix window
-nnoremap <silent> <leader>c :call asyncrun#quickfix_toggle(8)<cr>
+nnoremap <silent> <leader>cj :call asyncrun#quickfix_toggle(8)<cr>
 
 nnoremap <leader>cc :AsyncRun<space>
 nnoremap <leader>cx :AsyncStop<cr>
+
+function! s:zoom()
+  if winnr('$') > 1
+    tab split
+  elseif len(filter(map(range(tabpagenr('$')), 'tabpagebuflist(v:val + 1)'),
+                  \ 'index(v:val, '.bufnr('').') >= 0')) > 1
+    tabclose
+  endif
+endfunction
+nnoremap <silent> <leader>z :call <sid>zoom()<cr>
 
 " NOTE
 " compile_commands.json
