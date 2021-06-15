@@ -15,6 +15,7 @@ let g:coc_global_extensions = [
             \ 'coc-git',
             \ 'coc-translator',
             \ 'coc-json',
+            \ 'coc-clangd',
             \ 'coc-cmake',
             \ ]
 
