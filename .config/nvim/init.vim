@@ -90,9 +90,32 @@ augroup mygroup
 augroup end
 
 nmap <leader>t <Plug>(coc-translator-p)
-vmap <leader>t <Plug>(coc-translator-pv
+vmap <leader>t <Plug>(coc-translator-pv)
 
-nnoremap <silent> <leader>y :<C-u>CocList -A --normal yank<cr>
+" Remap <C-f> and <C-b> for scroll float windows/popups.
+nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ?
+            \ coc#float#scroll(1) : "\<C-f>"
+nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ?
+            \ coc#float#scroll(0) : "\<C-b>"
+inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ?
+            \ "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ?
+            \ "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ?
+            \ coc#float#scroll(1) : "\<C-f>"
+vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ?
+            \ coc#float#scroll(0) : "\<C-b>"
+
+" Mappings for CoCList
+
+nnoremap <silent><nowait> <leader>ly :<C-u>CocList -A --normal yank<cr>
+" Search workspace symbols.
+nnoremap <silent><nowait> <leader>ls :<C-u>CocList -I symbols<cr>
+" Show commands.
+nnoremap <silent><nowait> <leader>lc :<C-u>CocList commands<cr>
+" Find symbol of current document.
+nnoremap <silent><nowait> <leader>lo :<C-u>CocList outline<cr>
+
 
 nnoremap <silent> <leader>v :Vista!!<cr>
 
