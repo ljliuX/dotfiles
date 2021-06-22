@@ -6,7 +6,6 @@ Plug 'liuchengxu/vista.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'mhinz/vim-startify'
-Plug 'vimwiki/vimwiki'
 call plug#end()
 
 let g:coc_global_extensions = [
