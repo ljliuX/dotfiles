@@ -122,6 +122,8 @@ nnoremap <silent> <leader>v :Vista!!<cr>
 " toggle quickfix window
 nnoremap <silent> <leader>cj :call asyncrun#quickfix_toggle(8)<cr>
 
+nnoremap <silent> <C-l> :<C-u>nohlsearch<cr><C-l>
+
 nnoremap <leader>cc :AsyncRun<space>
 nnoremap <leader>cx :AsyncStop<cr>
 
